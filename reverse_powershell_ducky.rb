@@ -79,7 +79,7 @@ begin
 	if File.exist?('/usr/bin/msfvenom')
 		msf_path = '/usr/bin/'
 	elsif File.exist?("/opt/metasploit-framework/msfvenom")
-		msf_path = '/opt/metasploit-framework/')
+		msf_path = ('/opt/metasploit-framework/')
 	else
 		print_error("Metasploit Not Found!")
 		exit
